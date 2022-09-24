@@ -86,7 +86,7 @@
   },
   "typedef struct": {
     "prefix": "structt",
-    "body": ["typedef struct s_$1", "{", "\t$0", "}\t$1;"],
+    "body": ["typedef struct s_$1", "{", "\t$0", "}\tt_$1;"],
     "description": "Code snippet to define a type with struct"
   },
   "switch": {
@@ -127,7 +127,7 @@
       "\t$0",
       "}"
     ],
-    "description": "Main with args template"
+    "description": "Void main"
   },
   "Main with args template": {
     "prefix": "mainarg",
@@ -183,36 +183,6 @@
     ],
     "description": "Creates a linked list template"
   },
-  "Create a function": {
-    "prefix": "func",
-    "body": ["${2:void} ${1:func}(${4:void})", "{", "\t$3", "}"],
-    "description": "Creates a function"
-  },
-  "Create int function": {
-    "prefix": "intfunc",
-    "body": ["int $1 ()", "{", "\tint $2 = $3;$4", "\treturn $2;", "}"],
-    "description": "Creates a function that returns the int type"
-  },
-  "Create float function": {
-    "prefix": "flfunc",
-    "body": ["float $1 ()", "{", "\tfloat $2 = $3;$4", "\treturn $2;", "}"],
-    "description": "Creates a function that returns the float type"
-  },
-  "Create double function": {
-    "prefix": "doubfunc",
-    "body": ["double $1 ()", "{", "\tdouble $2 = $3;$4", "\treturn $2;", "}"],
-    "description": "Creates a function that returns the double type"
-  },
-  "Create string function": {
-    "prefix": "strfunc",
-    "body": ["char[] $1 ()", "{", "\tchar[] $2 = {$3};$4", "\treturn $2;", "}"],
-    "description": "Creates a function that returns the char array type"
-  },
-  "Create long function": {
-    "prefix": "longfunc",
-    "body": ["long $1 ()", "{", "\tlong $2 = $3;$4", "\treturn $3;", "}"],
-    "description": "Creates a function that returns the long type"
-  },
   "Print variable of type float (2 decimal places)": {
     "prefix": "pflo",
     "body": ["printf(\"$0 :>> %.2f\\n\", $0);"],
@@ -227,11 +197,6 @@
     "prefix": "pcha",
     "body": ["printf(\"$0 :>> %c\\n\", $0);"],
     "description": "Calls printf() to log value of variable of type char"
-  },
-  "Print variable of type pointer": {
-    "prefix": "ppoint",
-    "body": ["printf(\"$0 :>> %p\\n\", (void *) $0);"],
-    "description": "Calls printf() to log value of variable of type pointer"
   },
   "Print variable of type size_t": {
     "prefix": "psiz",
@@ -267,33 +232,5 @@
     "prefix": "fscanf",
     "body": ["fscanf($1, \"$2\"$0);"],
     "description": "Generic fscanf() snippet"
-  },
-  "Allocate memory using malloc": {
-    "prefix": "mal",
-    "body": [
-      "${1:int} *${2:v} = malloc(${3:1} * sizeof($1));",
-      "",
-      "if (!$2) {",
-      "\tfprintf(stderr, \"Memory allocation failed!\\n\");",
-      "\t$4;",
-      "}",
-      "$0",
-      "free($2);"
-    ],
-    "description": "Allocates memory to a pointer variable using malloc(), then deallocates using free()."
-  },
-  "Allocate memory using calloc": {
-    "prefix": "cal",
-    "body": [
-      "${1:int} *${2:v} = calloc(${3:1}, sizeof($1));",
-      "",
-      "if (!$2) {",
-      "\tfprintf(stderr, \"Memory allocation failed!\\n\");",
-      "\t$4;",
-      "}",
-      "$0",
-      "free($2);"
-    ],
-    "description": "Allocates memory to a pointer variable using calloc(), then deallocates using free()."
   }
 }
