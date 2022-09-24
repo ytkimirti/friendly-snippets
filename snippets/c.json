@@ -1,15 +1,35 @@
 {
-  "for": {
-    "prefix": "for",
+  "fori": {
+    "prefix": "fori",
     "body": [
-      "for (${1:size_t} ${2:i} = ${3:0}; $2 < ${4:length}; $2++)", 
+      "for (int i = 0; i < $1; i++)", 
 	  "{",
       "\t$0",
       "}"
     ],
-    "description": "Code snippet for 'for' loop"
+    "description": "quick for with i"
   },
-  "forr": {
+  "forj": {
+    "prefix": "forj",
+    "body": [
+      "for (int j = 0; j < $1; j++)", 
+	  "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "quick for with j"
+  },
+  "forri": {
+    "prefix": "forri",
+    "body": [
+      "for (int i = $1 - 1; i >= 0; i--)", 
+	  "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "quick reverse for with i"
+  },
+  "forri": {
     "prefix": "forr",
     "body": [
       "for (${1:size_t} ${2:i} = ${3:length} - 1; $2 >= ${4:0}; $2--)",
@@ -84,15 +104,15 @@
     "body": ["union ${1:MyUnion}", "{", "\t$0", "};"],
     "description": "Code snippet for union"
   },
-  "#incn": {
-    "prefix": "#incn",
+  "#inch": {
+    "prefix": "#inch",
     "body": ["#include \"$0.h\""],
-    "description": "Code snippet for #include \" \""
+    "description": "Include user header file"
   },
-  "#incb": {
-    "prefix": "#incb",
+  "#incl": {
+    "prefix": "#incl",
     "body": ["#include <$0.h>"],
-    "description": "Code snippet for #include < >"
+    "description": "Include library header file"
   },
   "#def": {
     "prefix": "#def",
