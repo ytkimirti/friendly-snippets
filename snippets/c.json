@@ -2,7 +2,8 @@
   "for": {
     "prefix": "for",
     "body": [
-      "for (${1:size_t} ${2:i} = ${3:0}; $2 < ${4:length}; $2++) {",
+      "for (${1:size_t} ${2:i} = ${3:0}; $2 < ${4:length}; $2++)", 
+	  "{",
       "\t$0",
       "}"
     ],
@@ -11,7 +12,8 @@
   "forr": {
     "prefix": "forr",
     "body": [
-      "for (${1:size_t} ${2:i} = ${3:length} - 1; $2 >= ${4:0}; $2--) {",
+      "for (${1:size_t} ${2:i} = ${3:length} - 1; $2 >= ${4:0}; $2--)",
+	  "{",
       "\t$0",
       "}"
     ],
@@ -19,27 +21,27 @@
   },
   "while": {
     "prefix": "while",
-    "body": ["while ($1) {", "\t$0", "}"],
+    "body": ["while ($1)", "{", "\t$0", "}"],
     "description": ""
   },
   "if": {
     "prefix": "if",
-    "body": ["if ($1) {", "\t$0", "}"],
+    "body": ["if ($1)", "{", "\t$0", "}"],
     "description": "Code snippet for if statement"
   },
   "else": {
     "prefix": "else",
-    "body": ["else {", "\t$0", "}"],
+    "body": ["else", "{", "\t$0", "}"],
     "description": "Code snippet for else statement"
   },
   "else if": {
     "prefix": "else if",
-    "body": ["else if ($1) {", "\t$0", "}"],
+    "body": ["else if ($1)", "{", "\t$0", "}"],
     "description": "Code snippet for else-if statement"
   },
   "enum": {
     "prefix": "enum",
-    "body": ["enum ${1:MyEnum} {", "\t$0", "};"],
+    "body": ["enum e_$1", "{", "\t$0", "};"],
     "description": "Code snippet for enum"
   },
   "#ifdef": {
@@ -59,12 +61,12 @@
   },
   "struct": {
     "prefix": "struct",
-    "body": ["struct ${1:MyStruct} {", "\t$0", "};"],
+    "body": ["struct s_$1", "{", "\t$0", "};"],
     "description": "Code snippet for struct"
   },
   "typedef struct": {
     "prefix": "structt",
-    "body": ["typedef struct {", "\t$0", "} ${1:MyStruct};"],
+    "body": ["typedef struct s_$1", "{", "\t$0", "}\t$1;"],
     "description": "Code snippet to define a type with struct"
   },
   "switch": {
@@ -79,34 +81,43 @@
   },
   "union": {
     "prefix": "union",
-    "body": ["union ${1:MyUnion} {", "\t$0", "};"],
+    "body": ["union ${1:MyUnion}", "{", "\t$0", "};"],
     "description": "Code snippet for union"
   },
-  "#inc": {
-    "prefix": "#inc",
-    "body": ["#include \"$0\""],
+  "#incn": {
+    "prefix": "#incn",
+    "body": ["#include \"$0.h\""],
     "description": "Code snippet for #include \" \""
   },
-  "#inc<": {
-    "prefix": "#inc<",
-    "body": ["#include <$0>"],
+  "#incb": {
+    "prefix": "#incb",
+    "body": ["#include <$0.h>"],
     "description": "Code snippet for #include < >"
   },
   "#def": {
-    "prefix": "def",
+    "prefix": "#def",
     "body": ["#define $0"],
     "description": "Code snippet for #define \" \""
   },
-  "Main function template": {
-    "prefix": "main",
+  "Main template": {
+    "prefix": "mainvoid",
     "body": [
-      "int main (int argc, char *argv[])",
+      "int\tmain(void)",
       "{",
       "\t$0",
-      "\treturn 0;",
       "}"
     ],
-    "description": "A standard main function for a C program"
+    "description": "Main with args template"
+  },
+  "Main with args template": {
+    "prefix": "mainarg",
+    "body": [
+      "int\tmain(int argc, char *argv[])",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Main with args template"
   },
   "Standard Starter Template": {
     "prefix": "sst",
